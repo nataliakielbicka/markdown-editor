@@ -11,7 +11,7 @@
         var inputValArrLast = inputValArr[inputValArrLen - 1];
         var inputValArrLastLen = inputValArrLast.length;
         var inputAdd = inputValArrLast.substring(1, inputValArrLastLen);
-        if (inputValArrLast.startsWith("#")) {
+        if (inputValArrLast.charAt(0) === "#" && inputValArrLast.charAt(1) !== "#") {
             var newDiv = document.createElement(node);
             var newContent = document.createTextNode(inputAdd);
             newDiv.appendChild(newContent);
