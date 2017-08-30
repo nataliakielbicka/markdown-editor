@@ -11,14 +11,17 @@
         var inputValArrLast = inputValArr[inputValArrLen - 1];
         var inputValArrLastLen = inputValArrLast.length;
         var inputAdd = inputValArrLast.substring(1, inputValArrLastLen);
-        var newDiv = document.createElement(node);
-        var newContent = document.createTextNode(inputAdd);
-        newDiv.appendChild(newContent);
-        output.insertBefore(newDiv, output.nextElementSibling);
+        if (inputValArrLast.startsWith("#")) {
+            var newDiv = document.createElement(node);
+            var newContent = document.createTextNode(inputAdd);
+            newDiv.appendChild(newContent);
+
+            output.insertBefore(newDiv, output.nextElementSibling);
+        }
     }
 
     function convertH1() {
-        addElement("h4");
+        addElement("h1");
     }
 
     document.body.addEventListener("keydown", function() {
