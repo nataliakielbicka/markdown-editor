@@ -2,17 +2,28 @@
     "use strict";
 
     var output = document.getElementById("output");
-    //var convert = document.getElementById("convert");
+    var timer = 0;
+
+    function addElement() {
+        var inputVal = document.getElementById("input").value;
+        var inputValArr = inputVal.split("\n");
+        var inputValArrLen = inputValArr.length;
+        var inputValArrLast = inputValArr[inputValArrLen - 1];
+        var inputValArrLastLen = inputValArrLast.length;
+        var inputAdd = inputValArrLast.substring(1, inputValArrLastLen);
+        var newDiv = document.createElement("h1");
+        var newContent = document.createTextNode(inputAdd);
+        newDiv.appendChild(newContent);
+        output.insertBefore(newDiv, output.nextElementSibling);
+    }
 
     function convertH1() {
-        var inputVal = document.getElementById("input").value;
-        var inputValLen = inputVal.length;
-        output.innerHTML = "<h1>" + inputVal.substring(1, inputValLen) + "</h1>";
+        addElement();
     }
-    var timer = 0;
+
     document.body.addEventListener("keydown", function() {
         clearTimeout(timer);
         timer = setTimeout(convertH1, 1500);
     });
-    //console.log(input.textContent.substring(1, input.textContent.length));
+
 })();
